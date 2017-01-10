@@ -1,12 +1,17 @@
 
 import os
+import time
 
 from psd_tools import PSDImage
+from . import SETTINGS
 
 
 class PSDHandler(object):
 
-    leaf_layers = []
+    _psd_path = None
+    _psd_filename = None
+
+    leaf_layers = None
 
     def __init__(self, psd_filepath):
 
@@ -18,12 +23,28 @@ class PSDHandler(object):
 
         print(f"LOADING..{psd_filepath}")
 
-        psdimage = PSDImage.load(psd_filepath)
-        self.recurse(psdimage)
+        self.leaf_layers = []
 
-    def recurse(self, parent_layer):
+        self._psd_path = os.path.dirname(psd_filepath)
+        self._psd_filename = os.path.basename(psd_filepath)
+
+        starttime = time.time()
+        psdimage = PSDImage.load(psd_filepath)
+        self.recurse_catch_leaves(psdimage)
+
+        print("LOADED IN {} SECONDS".format(time.time() - starttime))
+
+    def recurse_catch_leaves(self, parent_layer):
         for layer in parent_layer.layers:
-            if layer.hasattr("layers"):
-                self.recurse(layer)
+            if hasattr(layer, "layers"):
+                self.recurse_catch_leaves(layer)
             else:
-                leaf_layers.append(layer)
+                self.leaf_layers.append(layer)
+
+    def unpack(self):
+        dirname = f"{self._psd_path}/{SETTINGS.OUTPUT_DIRECTORY}/{self._psd_filename}"
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+        for layer in self.leaf_layers:
+            filename = f"{layer.name}.png"
+            layer.as_PIL().save(f"{dirname}/{filename}")

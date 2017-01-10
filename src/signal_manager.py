@@ -15,14 +15,25 @@ class SignalManager(object):
 
     @staticmethod
     def init(window):
+        valid_handlers = []
 
         def setup_handler(widget_name):
+            """ replace of lambda """
+
             widget = getattr(window, widget_name)
-            try:
-                assert isinstance(widget, QWidget)
-                getattr(components, widget_name)(widget)
-            except:
+
+            if not isinstance(widget, QWidget):
                 return
 
-        # casting list invokes setup_handler
-        list(map(setup_handler, dir(window)))
+            if not hasattr(components, widget_name):
+                return
+
+            valid_handlers.append(
+                getattr(components, widget_name)(widget, widget_name)
+            )
+
+        for widget_name in dir(window):
+            setup_handler(widget_name)
+
+        for widget_handler in valid_handlers:
+            widget_handler.start()
