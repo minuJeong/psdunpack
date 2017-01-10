@@ -1,4 +1,5 @@
 # psdunpack
 
-# CXFREEZE build
-python setup.py build
+### CXFREEZE build ###
+
+```python setup.py build```
