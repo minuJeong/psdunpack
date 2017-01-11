@@ -1,6 +1,9 @@
 
 """
 Defines ui interactions
+
+Dependency:
+ - PyQt5
 """
 
 from PyQt5.QtWidgets import QWidget

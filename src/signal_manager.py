@@ -1,4 +1,9 @@
 
+"""
+dependency:
+ - PyQt5
+"""
+
 import sys
 
 from PyQt5.QtWidgets import QWidget

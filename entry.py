@@ -1,4 +1,18 @@
 
+"""
+Unpack psd format file to png files
+
+dependency:
+ - python 3.6 or above
+ - PyQt5
+ - psd_tools
+ - Pillow
+
+read requirements.txt for detailed dependency description
+
+author: minu jeong
+"""
+
 import os
 import sys
 

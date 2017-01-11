@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'F:\TempScripts\LOCAL\psdhandling\ui\mainwin.ui'
+# Form implementation generated from reading ui file '\\apseodesk214\psdhandling\ui\mainwin.ui'
 #
 # Created by: PyQt5 UI code generator 5.7.1
 #

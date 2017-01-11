@@ -1,8 +1,31 @@
 
+"""
+dependency:
+ - psd_tools
+ - Pillow
+
+author: minu jeong
+"""
+
 import os
 import time
 
-from psd_tools import PSDImage
+try:
+    from psd_tools import PSDImage
+except ModuleNotFoundError:
+    import pip
+
+    pip.main(["install", "psd_tools"])
+    from psd_tools import PSDImage
+
+try:
+    from PIL import Image
+except ModuleNotFoundError:
+    import pip
+
+    pip.main(["install", "Pillow"])
+    from PIL import Image
+
 from . import SETTINGS
 
 
