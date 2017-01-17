@@ -85,11 +85,6 @@
           <string>Layers</string>
          </property>
         </column>
-        <item>
-         <property name="text">
-          <string>aaaa</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item>
