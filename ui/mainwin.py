@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'F:\TempScripts\LOCAL\psdhandling\ui\mainwin.ui'
+# Form implementation generated from reading ui file 'F:\TempScripts\LOCAL\TEMPLATE\ui\mainwin.ui'
 #
 # Created by: PyQt5 UI code generator 5.7.1
 #
@@ -42,7 +42,6 @@ class Ui_MainWindow(object):
         self.Preview_Layers = QtWidgets.QTreeWidget(self.centralwidget)
         self.Preview_Layers.setIndentation(5)
         self.Preview_Layers.setObjectName("Preview_Layers")
-        item_0 = QtWidgets.QTreeWidgetItem(self.Preview_Layers)
         self.verticalLayout.addWidget(self.Preview_Layers)
         self.UnpackButton = QtWidgets.QPushButton(self.centralwidget)
         self.UnpackButton.setObjectName("UnpackButton")
@@ -57,10 +56,6 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "PSDUnpack"))
         self.Preview_Layers.headerItem().setText(0, _translate("MainWindow", "Layers"))
-        __sortingEnabled = self.Preview_Layers.isSortingEnabled()
-        self.Preview_Layers.setSortingEnabled(False)
-        self.Preview_Layers.topLevelItem(0).setText(0, _translate("MainWindow", "aaaa"))
-        self.Preview_Layers.setSortingEnabled(__sortingEnabled)
         self.UnpackButton.setText(_translate("MainWindow", "Unpack"))
 
 import mainwin_rc
